@@ -6,10 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <script type="text/javascript" src="precense.json"></script>
+    <style>
+    
+    #secoundAttempt{
+        line-height: 250%;
+    }
+    
+    </style>
+    
     <script>
-        klasseliste = ["Bjørnsen, Tor","Johansen, Eva","Hansen, Isak","Andersen, Sara","Karlsen, Elias","Nilsen, Sofia",    "Moen, Henrik",    "Kristoffersen, Maja",    "Larsen, Markus",    "Johnsen, Ida",    "Olsen, William",    "Pettersen, Linnea",    "Gundersen, Jakob",    "Eriksen, Emma",    "Haugen, Marcus",    "Bakken, Nora",    "Paulsen, Markus",    "Jensen, Johanna",    "Jonsen, Isak",    "Solberg, Vilde", "Kåre, Frøholm"]
+        klasseliste = ["Bjørnsen, Tor","Johansen, Eva","Hansen, Isak","Andersen, Sara","Karlsen, Elias","Nilsen, Sofia",    "Moen, Henrik",    "Kristoffersen, Maja",    "Larsen, Markus",    "Johnsen, Ida",    "Olsen, William",    "Pettersen, Linnea",    "Gundersen, Jakob",    "Eriksen, Emma",    "Haugen, Marcus",    "Bakken, Nora",    "Paulsen, Markus",    "Jensen, Johanna",    "Jonsen, Isak",    "Solberg, Vilde", "Frøholm, Kåre"]
 
+        var studentsObj = 1;
+
+        fetch("./precense.json")
+        .then(function (response) {
+        return response.json();
+        })
+        .then(function (students) {
+        studentsObj = students;
+
+        console.log(students);
+        studentsObj = students;
+        });
+        
 
         function writeTable(endeligListe){
             let table = document.getElementById("secoundAttempt");
@@ -17,13 +37,11 @@
             let col1 = document.createElement("td");
 
             for (let i = 0; i < endeligListe.length; i++){
-                console.log(i)
                 let td = document.createElement("tr");
                 td.innerHTML = i;
 
                 col1.appendChild(td)
             }
-
             let col2 = document.createElement("td")
 
             for (let i = 0; i < endeligListe.length; i++){
@@ -40,22 +58,37 @@
                 navn = endeligListe[i].split(", ")[1]
                 let td = document.createElement("tr")
                 td.innerHTML = navn;
-
                 col3.appendChild(td)
             }
             
-            col4 = document.createElement("td")
+            col4 = document.createElement("td");
+            
+            for (let i = 0; i<endeligListe.length; i++){
+                for (let xyz = 0; xyz<endeligListe.length; xyz++){
+                    if (studentsObj.students[xyz].firstname == endeligListe[i].split(', ')[1]){
 
-            for (let i = 0; i< endeligListe.length; i++){
-                let td = document.createElement("tr")
-                td.innerHTML = "<"
+                        console.log(endeligListe[1].split(', ')[1])
+
+                        let isprecent = studentsObj.students[xyz].presence
+                        let td = document.createElement("tr")
+                        if (isprecent == true){
+                            td.innerHTML = '<button class="green" onclick="switch">'+studentsObj.students[xyz].firstname+' is Precent!</button>'
+                        }else{
+                            td.innerHTML = '<button class="red" onclick="switch">'+studentsObj.students[xyz].firstname+' is Not precent!</button>'
+                        }
+                        col4.appendChild(td)
+                    }
+                }
             }
+
 
             document.getElementById("secoundAttempt").innerHTML = null;
 
             table.appendChild(col1);
             table.appendChild(col2);
             table.appendChild(col3);
+            table.appendChild(col4);
+
         }
 
         function sortLastName(){
@@ -83,11 +116,9 @@
             writeTable(lastlist)
         }
 
-        var mydata = JSON.parse(data);
-        console.log(mydata.parse[0].sortFirstName)
     </script>
 
-<body onload="writeTable(klasseliste)">
+<body onload="setTimeout(function() {writeTable(klasseliste)}, 150);">
     <table id="secoundAttempt"></table>
 
     <button onclick="sortFirstName()">sorter alfabetisk etter fornavnet</button>
