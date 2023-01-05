@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script type="text/javascript" src="precense.json"></script>
+    <script>
+        klasseliste = ["Bjørnsen, Tor","Johansen, Eva","Hansen, Isak","Andersen, Sara","Karlsen, Elias","Nilsen, Sofia",    "Moen, Henrik",    "Kristoffersen, Maja",    "Larsen, Markus",    "Johnsen, Ida",    "Olsen, William",    "Pettersen, Linnea",    "Gundersen, Jakob",    "Eriksen, Emma",    "Haugen, Marcus",    "Bakken, Nora",    "Paulsen, Markus",    "Jensen, Johanna",    "Jonsen, Isak",    "Solberg, Vilde", "Kåre, Frøholm"]
+
+
+        function writeTable(endeligListe){
+            let table = document.getElementById("secoundAttempt");
+
+            let col1 = document.createElement("td");
+
+            for (let i = 0; i < endeligListe.length; i++){
+                console.log(i)
+                let td = document.createElement("tr");
+                td.innerHTML = i;
+
+                col1.appendChild(td)
+            }
+
+            let col2 = document.createElement("td")
+
+            for (let i = 0; i < endeligListe.length; i++){
+                navn = endeligListe[i].split(", ")[0]
+                let td = document.createElement("tr")
+                td.innerHTML = navn;
+
+                col2.appendChild(td)
+            }
+
+            let col3 = document.createElement("td")
+
+            for (let i = 0; i < endeligListe.length; i++){
+                navn = endeligListe[i].split(", ")[1]
+                let td = document.createElement("tr")
+                td.innerHTML = navn;
+
+                col3.appendChild(td)
+            }
+            
+            col4 = document.createElement("td")
+
+            for (let i = 0; i< endeligListe.length; i++){
+                let td = document.createElement("tr")
+                td.innerHTML = "<"
+            }
+
+            document.getElementById("secoundAttempt").innerHTML = null;
+
+            table.appendChild(col1);
+            table.appendChild(col2);
+            table.appendChild(col3);
+        }
+
+        function sortLastName(){
+            let liste = klasseliste;
+            liste = liste.sort()
+
+            writeTable(liste);
+        }
+
+        function sortFirstName(){
+            let list = klasseliste;
+            let newlist = []
+            let lastlist = []
+
+            for (i = 0; i<klasseliste.length; i++){
+                navn = klasseliste[i].split(", ")
+                let omvendt = navn[1] + ", " + navn[0]   
+                newlist.push(omvendt)             
+            }
+            newlist.sort()
+            for (i = 0; i<klasseliste.length; i++){
+                navn = newlist[i].split(", ")
+                lastlist.push(navn[1]+", "+navn[0])
+            }
+            writeTable(lastlist)
+        }
+
+        var mydata = JSON.parse(data);
+        console.log(mydata.parse[0].sortFirstName)
+    </script>
+
+<body onload="writeTable(klasseliste)">
+    <table id="secoundAttempt"></table>
+
+    <button onclick="sortFirstName()">sorter alfabetisk etter fornavnet</button>
+    <button onclick="sortLastName()">sorter alfabetisk etter etternavnet</button>
+
+</body>
+</html>

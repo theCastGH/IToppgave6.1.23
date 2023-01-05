@@ -1,0 +1,136 @@
+{
+"students" : [
+{
+    "firstname": "Bjørnsen",
+    "lastname": "Tor",
+    "id": 1,
+    "precence": true
+},
+{
+    "firstname": "Johansen",
+    "lastname": "Eva",
+    "id": 2,
+    "precence": true
+},
+{
+    "firstname": "Hansen",
+    "lastname": "Isak",
+    "id": 3,
+    "precence": true
+},
+{
+    "firstname": "Andersen",
+    "lastname": "Sara",
+    "id": 4,
+    "precence": true
+},
+{
+    "firstname": "Karlsen",
+    "lastname": "Elias",
+    "id": 5,
+    "precence": true
+},
+{
+    "firstname": "Nilsen",
+    "lastname": "Sofia",
+    "id": 6,
+    "precence": true
+},
+{
+    "firstname": "Moen",
+    "lastname": "Henrik",
+    "id": 7,
+    "precence": true
+},
+{
+    "firstname": "Kristoffersen",
+    "lastname": "Maja",
+    "id": 8,
+    "precence": true
+},
+{
+    "firstname": "Larsen",
+    "lastname": "Markus",
+    "id": 9,
+    "precence": true
+},
+{
+    "firstname": "Johnsen",
+    "lastname": "Ida",
+    "id": 10,
+    "precence": true
+},
+{
+    "firstname": "Olsen",
+    "lastname": "William",
+    "id": 11,
+    "precence": true
+},
+{
+    "firstname": "Pettersen",
+    "lastname": "Linnea",
+    "id": 12,
+    "precence": true
+},
+{
+    "firstname": "Gundersen",
+    "lastname": "Jakob",
+    "id": 13,
+    "precence": true
+},
+{
+    "firstname": "Eriksen",
+    "lastname": "Emma",
+    "id": 14,
+    "precence": true
+},
+{
+    "firstname": "Haugen",
+    "lastname": "Marcus",
+    "id": 15,
+    "precence": true
+},
+{
+    "firstname": "Bakken",
+    "lastname": "Nora",
+    "id": 16,
+    "precence": true
+},
+{
+    "firstname": "Paulsen",
+    "lastname": "Markus",
+    "id": 17,
+    "precence": true
+},
+{
+    "firstname": "Jensen",
+    "lastname": "Johanna",
+    "id": 18,
+    "precence": true
+},
+{
+    "firstname": "Johanna",
+    "lastname": "Jensen",
+    "id": 18,
+    "precence": true
+},
+{
+    "firstname": "Isak",
+    "lastname": "Jonsen",
+    "id": 19,
+    "precence": true
+},
+{
+    "firstname": "Vilde",
+    "lastname": "Solberg",
+    "id": 20,
+    "precence": true
+},
+{
+    "firstname": "Kåre",
+    "lastname": "Frøholm",
+    "id": 21,
+    "precence": true
+}
+]
+}
