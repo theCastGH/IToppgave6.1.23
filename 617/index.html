@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oppgave 617</title>
+</head>
+<body>
+    
+    <p>skriv brukernavnet ditt: </p><input id="user" type="text">
+    <p>skriv passordet ditt:</p><input id="pass" type="password">
+
+    <button onclick="login()">log inn</button>
+
+    <p id="feilmelding"></p>
+
+</body>
+
+<script>
+
+    let jsonFile;
+
+    fetch("./topphemmelig.json")
+  	.then(function (response) {
+    return response.json();
+  	})
+  	.then(function (students) {
+    jsonFile = students;
+  	})
+
+    function login(){
+        let user = document.getElementById('user').value
+        let pass = document.getElementById('pass').value
+
+        console.log(user+':'+pass == jsonFile["creds"][0]["brukernavn"]+':'+jsonFile["creds"][0]["passord"])
+
+        if (user+':'+pass == jsonFile["creds"][0]["brukernavn"]+':'+jsonFile["creds"][0]["passord"]){
+            window.location.href = './dashboard.html';
+            console.log('success')
+        }else{
+            document.getElementById('feilmelding').innerHTML = 'Feil brukernavn eller passord';
+        }
+    }
+</script>
+
+</html>
