@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>h1{color:red;}</style>
+</head>
+<body>
+    <p>Movie title: </p><input id="title">
+    <button onclick="search()">search</button>
+
+    <h1 id="movietitle"></h1>
+    <img src=0 id="poster">
+    <p id="release"></p>
+    <p id="plot"></p>
+    <p id="actors"></p>
+    <p id="rating"></p>
+
+</body>
+
+    <script>
+
+    async function search(){
+        let query = 'http://www.omdbapi.com/?apiKey=52f1b120&i=tt3896198';
+        let finalQuery;
+        let title = document.getElementById('title').value;
+        const image = document.getElementById('poster')
+
+
+        if (typeof title != 'undefined') {finalQuery = query + '&t='+title;}
+
+        console.log(finalQuery)
+        const response = await fetch(finalQuery);
+        const res = await response.json();
+
+        document.getElementById('movietitle').innerHTML = res["Title"]
+        image.src = res["Poster"]
+
+        document.getElementById('release').innerHTML = "Release Year: " + res["Released"]
+        document.getElementById('plot').innerHTML = "Plot: " + res["Plot"]
+        document.getElementById('actors').innerHTML = "Actors: " + res["Actors"]
+        document.getElementById('rating').innerHTML = "IMDB rating: " + res["imdbRating"]
+
+
+
+    }
+
+    </script>
+<!--http://www.omdbapi.com/?i=tt3896198&apikey=52f1b120-->
+</html>
