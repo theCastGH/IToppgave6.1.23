@@ -12,12 +12,15 @@
         line-height: 250%;
     }
     
+    .red{background-color:red;color:white;}
+    .green{background-color:green;color:white;}
+    
     </style>
     
     <script>
         klasseliste = ["Bjørnsen, Tor","Johansen, Eva","Hansen, Isak","Andersen, Sara","Karlsen, Elias","Nilsen, Sofia",    "Moen, Henrik",    "Kristoffersen, Maja",    "Larsen, Markus",    "Johnsen, Ida",    "Olsen, William",    "Pettersen, Linnea",    "Gundersen, Jakob",    "Eriksen, Emma",    "Haugen, Marcus",    "Bakken, Nora",    "Paulsen, Markus",    "Jensen, Johanna",    "Jonsen, Isak",    "Solberg, Vilde", "Frøholm, Kåre"]
-
-        var studentsObj = 1;
+	
+	var studentsObj = 0;
 
         fetch("./precense.json")
         .then(function (response) {
@@ -29,7 +32,6 @@
         console.log(students);
         studentsObj = students;
         });
-        
 
         function writeTable(endeligListe){
             let table = document.getElementById("secoundAttempt");
@@ -65,7 +67,8 @@
             
             for (let i = 0; i<endeligListe.length; i++){
                 for (let xyz = 0; xyz<endeligListe.length; xyz++){
-                    if (studentsObj.students[xyz].firstname == endeligListe[i].split(', ')[1]){
+
+                    if (studentsObj.students[xyz].lastname + ', ' +studentsObj.students[xyz].firstname === endeligListe[i]){
 
                         console.log(endeligListe[1].split(', ')[1])
 
@@ -117,14 +120,16 @@
         }
 
         function switchPresence(id) {
-            let response = await fetch('toggle-presence.php?id='+id);
+            let response = fetch('switch.php?id='+id);
             console.log(response.status);
+            document.location.reload(true)
+            writeTable(klasseliste);
         }
         
         
     </script>
 
-<body onload="setTimeout(function() {writeTable(klasseliste)}, 150);">
+<body onload="setTimeout(function() {writeTable(klasseliste)}, 250);">
     <table id="secoundAttempt"></table>
 
     <button onclick="sortFirstName()">sorter alfabetisk etter fornavnet</button>
