@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oppgave 611</title>
+    <style>h1{color:blue;}</style>
+</head>
+<body>
+    <h1 id="overskrift"></h1><br>
+    <p id="symbol"></p><br>
+    <p id="atomnummber"></p><br>
+    <p id="agregatTillstand"></p><br><br>
+    <button onclick="prev();">Forgje Element</button><button onclick="next();">Neste Element</button>
+</body>
+
+<script>
+    let current = 0;
+    let hydrogen = {"navn":"hydrogen","symbol":"H","atomnummber":"1","agregarTilstand":"gass"};
+    let helium = {"navn":"helium","symbol":"He","atomnummber":"2","agregarTilstand":"gass"};
+    let litium = {"navn":"litium","symbol":"Li","atomnummber":"3","agregarTilstand":"fast stoff"};
+    let beryllium = {"navn":"beryllium","symbol":"Be","atomnummber":"4","agregarTilstand":"fast stoff"};
+    let bor = {"navn":"bor","symbol":"B","atomnummber":"5","agregarTilstand":"fast stoff"};
+    let atomer = [hydrogen,helium,litium,beryllium,bor];
+
+    function write(anum){
+        document.getElementById('overskrift').innerHTML = 'Grunnstoff: ' + atomer[anum].navn;
+        document.getElementById('symbol').innerHTML = 'symbol: ' + atomer[anum].symbol;
+        document.getElementById('atomnummber').innerHTML = 'atomnummer: ' + atomer[anum].atomnummber;
+        document.getElementById('agregatTillstand').innerHTML = 'agregatTillstand: ' + atomer[anum].agregarTilstand;
+    }
+
+    function prev(){
+        if (current != 0){
+        current--;
+        write(current)
+        }
+    }
+
+    function next(){
+        if (current != 4){
+        current++;
+        write(current);
+        }
+    }
+
+    write(current)
+
+</script>
+</html>
