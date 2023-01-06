@@ -72,16 +72,16 @@
                         let isprecent = studentsObj.students[xyz].presence
                         let td = document.createElement("tr")
                         if (isprecent == true){
-                            td.innerHTML = '<button class="green" onclick="switch">'+studentsObj.students[xyz].firstname+' is Precent!</button>'
+                            td.innerHTML = '<button class="green" onclick="switchPresence('+studentsObj.students[xyz].id+')">'+studentsObj.students[xyz].firstname+' is Precent!</button>'
                         }else{
-                            td.innerHTML = '<button class="red" onclick="switch">'+studentsObj.students[xyz].firstname+' is Not precent!</button>'
+                            td.innerHTML = '<button class="red" onclick="switchPresence('+studentsObj.students[xyz].id+')">'+studentsObj.students[xyz].firstname+' is Not precent!</button>'
                         }
                         col4.appendChild(td)
                     }
                 }
             }
 
-
+            
             document.getElementById("secoundAttempt").innerHTML = null;
 
             table.appendChild(col1);
@@ -116,6 +116,12 @@
             writeTable(lastlist)
         }
 
+        function switchPresence(id) {
+            let response = await fetch('toggle-presence.php?id='+id);
+            console.log(response.status);
+        }
+        
+        
     </script>
 
 <body onload="setTimeout(function() {writeTable(klasseliste)}, 150);">
