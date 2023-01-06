@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 if (isset($_GET['id'])) {
   $id = intval($_GET['id']);
   $jsonString = file_get_contents('precense.json');
@@ -14,7 +18,9 @@ if (isset($_GET['id'])) {
   }
 
   $jsonString = json_encode($students);
-  file_put_contents('presence.json', $jsonString);
+  file_put_contents('precense.json', $jsonString);
+}else {
+  echo "error"; 
 }
 
 ?>
